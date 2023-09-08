@@ -4,6 +4,10 @@ const util = require("util");
 const chalk = require("chalk");
 const { Configuration, OpenAIApi } = require("openai");
 let setting = require("./key.json");
+const BOT_NAME = process.env.BOT_NAME ?? "KnightGPT";
+const myEmoji = "➖➖➖➖➖➖➖➖"
+const yourLine = "✅Join - https://t.me/chatgpt04";
+const myLine = "👉Follow for more - youtu.be/masBjDhE2Fo";
 
 module.exports = sansekai = async (client, m, chatUpdate, store) => {
   try {
@@ -99,7 +103,6 @@ Ask anything after #img
               apiKey: setting.keyopenai,
             });
             const openai = new OpenAIApi(configuration);
-
             /*const response = await openai.createCompletion({
               model: "text-davinci-003",
               prompt: text,
@@ -114,7 +117,7 @@ Ask anything after #img
           model: "gpt-3.5-turbo",
           messages: [{role: "user", content: text}],
           });
-          m.reply(`${response.data.choices[0].message.content}`);
+          m.reply(`${response.data.choices[0].message.content + "\n\n" + myEmoji + "\n" + yourLine + "\n" + myLine + "\n" + myEmoji}`);
           } catch (error) {
           if (error.response) {
             console.log(error.response.status);
